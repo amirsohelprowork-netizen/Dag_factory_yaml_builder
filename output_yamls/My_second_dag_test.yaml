@@ -1,0 +1,12 @@
+My_second_dag_test:
+  default_args:
+    owner: airflow
+    start_date: '2026-01-01'
+  schedule: '* * * * *'
+  Description: my_second_demo_dag
+  catchup: false
+  tasks:
+    ping_server:
+      operator: airflow.operators.bash.BashOperator
+      bash_command: echo 'Ping successful.'
+      retries: 3
