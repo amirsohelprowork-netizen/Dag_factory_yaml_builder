@@ -1,10 +1,19 @@
-# Python-generated files
-__pycache__/
-*.py[oc]
-build/
-dist/
-wheels/
-*.egg-info
+# 1. Ignore everything by default
+*
 
-# Virtual environments
-.venv
+# 2. But do not ignore directories themselves (so Git can look inside them)
+!*/
+
+# 3. Allow your core Python files
+!Excel_to_yaml.py
+!main.py
+!README.md
+!pyproject.toml
+
+# 4. Allow everything inside input_files and output_yamls
+!input_files/**
+!output_yamls/**
+
+# 5. Specifically block Microsoft Excel temporary/owner files inside input_files
+~$*
+**/~$*
