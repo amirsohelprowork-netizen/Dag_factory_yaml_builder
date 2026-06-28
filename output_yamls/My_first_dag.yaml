@@ -1,0 +1,20 @@
+My_first_dag:
+  default_args:
+    start_date: '2026-01-01'
+    owner: airflow
+  schedule: null
+  Description: My first demo dag
+  catchup: false
+  tasks:
+    my_first_task_start:
+      operator: airflow.operators.empty.EmptyOperator
+    Bash_task:
+      operator: airflow.operators.bash.BashOperator
+      bash_command: echo 'task finished'
+      retries: 2
+      dependencies:
+      - my_first_task_start
+    my_first_task_finish:
+      operator: airflow.operators.empty.EmptyOperator
+      dependencies:
+      - Bash_task
